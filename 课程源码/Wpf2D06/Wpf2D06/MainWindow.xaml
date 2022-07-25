@@ -1,0 +1,60 @@
+﻿<Window
+    x:Class="Wpf2D06.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Wpf2D06"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <DockPanel>
+        <Slider
+            x:Name="slider"
+            DockPanel.Dock="Bottom"
+            Maximum="3"
+            Minimum="1" />
+
+        <Border Margin="50">
+            <Canvas x:Name="canvas" Background="LightGray">
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" />
+                        <TranslateTransform Y="{Binding ElementName=canvas, Path=ActualHeight}" />
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+                <Rectangle
+                    Width="200"
+                    Height="200"
+                    Stroke="Black">
+                    <Rectangle.RenderTransform>
+                        <ScaleTransform ScaleX="{Binding ElementName=slider, Path=Value}" ScaleY="{Binding ElementName=slider, Path=Value}" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Line
+                    Stroke="Green"
+                    X1="0"
+                    X2="100"
+                    Y1="0"
+                    Y2="100">
+                    <Line.RenderTransform>
+                        <ScaleTransform ScaleX="{Binding ElementName=slider, Path=Value}" ScaleY="{Binding ElementName=slider, Path=Value}" />
+                    </Line.RenderTransform>
+                </Line>
+                <TextBlock
+                    x:Name="textBlock"
+                    Canvas.Left="200"
+                    Canvas.Top="100"
+                    Text="My TextBlock">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1" />
+                            <TranslateTransform Y="{Binding ElementName=textBlock, Path=ActualHeight}" />
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Canvas>
+        </Border>
+    </DockPanel>
+</Window>

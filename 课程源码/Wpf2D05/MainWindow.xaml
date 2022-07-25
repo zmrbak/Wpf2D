@@ -1,0 +1,36 @@
+﻿<Window
+    x:Class="Wpf2D05.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Wpf2D05"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <DockPanel>
+        <Slider
+            Name="slider_x"
+            DockPanel.Dock="Bottom"
+            Minimum="0"
+            ValueChanged="slider_x_ValueChanged" />
+        <Slider
+            Name="slider_y"
+            Minimum="0"
+            Orientation="Vertical"
+            ValueChanged="slider_y_ValueChanged">
+            <Slider.LayoutTransform>
+                <RotateTransform Angle="180" />
+            </Slider.LayoutTransform>
+        </Slider>
+        <Canvas Name="canvas" SizeChanged="canvas_SizeChanged">
+            <Button
+                x:Name="button"
+                Width="200"
+                Height="100"
+                Click="Button_Click"
+                Content="按钮" />
+        </Canvas>
+    </DockPanel>
+</Window>
