@@ -12,16 +12,17 @@
     <DockPanel>
         <Slider
             x:Name="slider"
+            Margin="10"
             DockPanel.Dock="Bottom"
             Maximum="3"
-            Minimum="1" />
+            Minimum="0.5" />
 
         <Border Margin="50">
             <Canvas x:Name="canvas" Background="LightGray">
                 <Canvas.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1" />
-                        <TranslateTransform Y="{Binding ElementName=canvas, Path=ActualHeight}" />
+                        <TranslateTransform Y="{Binding RelativeSource={RelativeSource AncestorType=Canvas}, Path=ActualHeight}" />
                     </TransformGroup>
                 </Canvas.RenderTransform>
                 <Rectangle
@@ -43,14 +44,13 @@
                     </Line.RenderTransform>
                 </Line>
                 <TextBlock
-                    x:Name="textBlock"
                     Canvas.Left="200"
                     Canvas.Top="100"
                     Text="My TextBlock">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="-1" />
-                            <TranslateTransform Y="{Binding ElementName=textBlock, Path=ActualHeight}" />
+                            <TranslateTransform Y="{Binding RelativeSource={RelativeSource AncestorType=TextBlock}, Path=ActualHeight}" />
                         </TransformGroup>
                     </TextBlock.RenderTransform>
                 </TextBlock>
